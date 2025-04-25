@@ -22,7 +22,9 @@ Este projeto utiliza Google Apps Script na planilha do Google para automatizar a
 
 1. Acesse o google planilhas crie um novo projeto.
 
-2. **Você deve configurar sua planilha da seguinte forma:** Da coluna A até a F são as entradas de dados e a linha preta demarca o final daquele projeto. \
+2. **Você deve configurar sua planilha da seguinte forma:**  
+![Exemplo da planilha](planilha_exemplo.png)  
+Da coluna A até a F são as entradas de dados e a linha preta demarca o final daquele projeto.\
    \- A (Projeto) deve conter a cor e nome do projeto.\
    \- B (Apresentação) data de entrega do projeto.\
    \- C (Levantamento) data de início.\
