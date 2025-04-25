@@ -22,7 +22,7 @@ Este projeto utiliza Google Apps Script na planilha do Google para automatizar a
 
 1. Acesse o google planilhas crie um novo projeto.
 
-2. **Você deve configurar sua planilha da seguinte forma:** imagem/da coluna A até a F são as entradas de dados e a linha preta demarca o final daquele projeto. \
+2. **Você deve configurar sua planilha da seguinte forma:** Da coluna A até a F são as entradas de dados e a linha preta demarca o final daquele projeto. \
    \- A (Projeto) deve conter a cor e nome do projeto.\
    \- B (Apresentação) data de entrega do projeto.\
    \- C (Levantamento) data de início.\
@@ -30,9 +30,13 @@ Este projeto utiliza Google Apps Script na planilha do Google para automatizar a
 
 3. **Cole os arquivos acima** no seu projeto do Apps Script.(em extensões)
 
-4. **Na primeira vez que utilizar a aplicação, aceite as permissões do Google.**
+4. **Aperte o botão**.
 
-5. **Após aceitar as permissões, a aplicação estará pronta para uso.**
+5. **Na primeira vez que utilizar a aplicação, aceite as permissões do Google.**
+
+6. **Após aceitar as permissões, a aplicação estará pronta para uso.**
+
+7. **Agora basta abrir o seu google agenda**.
 
 ## Pré-requisitos
 
