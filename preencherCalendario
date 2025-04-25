@@ -1,0 +1,64 @@
+// Funcao para preencher o calendario do Google Agenda
+function preencherGoogleAgenda(dias, projetos) {
+  let numeroEspacos = 0;
+
+  projetos.forEach(projeto => {
+    console.log('Verificando existencia do calendario do projeto: ', projeto);
+    if (existeCalendarioParaProjeto(projeto.nome)) {
+      console.log('projeto ja tem calendario.');
+      return;
+    }
+
+    var calendar = CalendarApp.createCalendar(projeto.nome, {
+      summary: 'Calendário para o projeto: ' + projeto.nome,
+      description: 'Calendário criado automaticamente para gerenciar as tarefas do projeto. Cor recomendada: ' + projeto.cor
+    });
+    calendar.setColor(projeto.cor);
+
+    console.log('calendario criado');
+
+    // Adiciona evento de prazo do projeto
+    var prazo = new Date(projeto.prazo);
+    prazo.setDate(prazo.getDate() + 1);
+    calendar.createAllDayEvent('Prazo do projeto: ' + projeto.nome, prazo, {
+      description: 'Prazo final para o projeto ' + projeto.nome
+    });
+
+    console.log('prazo final definido');
+
+    // Itera sobre os dias e tarefas
+    dias.forEach((tarefas, dataString) => {
+      var data = new Date(dataString);
+      
+      // Remover qualquer horário, garantindo que seja um evento de dia inteiro
+      data.setHours(0, 0, 0, 0);
+
+      console.log('adicionando tarefas no dia ', data, ": ", tarefas);
+
+      tarefas.forEach(tarefa => {
+        if (tarefa.cor === projeto.cor) {
+          // Verifica se já existe um evento com o mesmo nome no mesmo dia
+          var eventosNoDia = calendar.getEventsForDay(data);
+          var eventoExistente = eventosNoDia.some(evento => evento.getTitle() === tarefa.tarefa);
+
+          if (!eventoExistente) {
+            // Cria evento de dia inteiro corretamente
+            calendar.createAllDayEvent('​'.repeat(numeroEspacos) + tarefa.tarefa, data, {
+              description: 'Projeto: ' + projeto.nome
+            });
+
+            console.log('criado evento para tarefa: ', tarefa.tarefa, " na data: ", data);
+          }
+        }
+
+        numeroEspacos++;
+      });
+    });
+
+    console.log('criacao do projeto finalizada.');
+  });
+}
+
+function existeCalendarioParaProjeto(nomeProjeto) {
+  return CalendarApp.getCalendarsByName(nomeProjeto).length > 0;
+}
